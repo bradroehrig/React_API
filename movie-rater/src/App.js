@@ -6,7 +6,7 @@ function App() {
   const [movies, setMovie] = useState([]);
 
   useEffect(()=>{
-    fetch("http://127.0.0.1:8000/apie/movies", {
+    fetch("http://127.0.0.1:8000/api/movies", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ function App() {
       <div className="layout">
         <div>
           { movies.map( movie => {
-            return <h2>{ movie }</h2>
+            return <h2>{ movie.title }</h2>
           })}
 
         </div>
