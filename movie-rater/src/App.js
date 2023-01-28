@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
 
-  const [movies, setMovie] = useState(['Movie 1', 'Movie 2']);
+  const [movies, setMovie] = useState([]);
 
-
+  useEffect(()=>{
+    fetch("http://127.0.0.1:8000/apie/movies", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':'Token 0b5b3e40e093f6746767bed29354889f58bdaf0e',
+      }
+    })
+    .then( resp => resp.jason())
+    .then( resp  => setMovie(resp))
+    .catch( error => console.log(error))
+  }, [])
 
 
 
