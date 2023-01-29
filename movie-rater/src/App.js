@@ -13,7 +13,7 @@ function App() {
         'Authorization':'Token 0b5b3e40e093f6746767bed29354889f58bdaf0e',
       }
     })
-    .then( resp => resp.jason())
+    .then( resp => resp.json())
     .then( resp  => setMovie(resp))
     .catch( error => console.log(error))
   }, [])
