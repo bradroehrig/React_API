@@ -17,9 +17,6 @@ function App() {
     .then( resp  => setMovie(resp))
     .catch( error => console.log(error))
   }, [])
-
-
-
   return (
     <div className="App">
       <header className="App-header">
@@ -30,12 +27,10 @@ function App() {
           { movies.map( movie => {
             return <h2>{ movie.title }</h2>
           })}
-
         </div>
         <div>Movie details</div>
       </div>
     </div>
   );
 }
-
 export default App;
