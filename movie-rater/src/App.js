@@ -25,7 +25,6 @@ function App() {
     setSelectedMovie(movie);
   }
 
-
   return (
     
     <div className="App">
@@ -35,9 +34,6 @@ function App() {
       <div className="layout">
         <MovieList movies={movies} movieClicked={movieClicked}/>
         <MovieDetails movie={selectedMovie}/>
-        
-        
-        <div>Movie details</div>
       </div>
     </div>
   );
