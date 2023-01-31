@@ -10,7 +10,6 @@ function MovieDetails(props){
                     <p>{props.movie.description}</p>
                 </div>
             ) : null }
-
         </div>
     )
 }
