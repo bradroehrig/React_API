@@ -4,7 +4,8 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 function MovieDetails(props){
 
-    const [ highlighted, setHighlighted ] = useState(3);
+    const [ highlighted, setHighlighted ] = useState(-1);
+
 
     const mov = props.movie;
 
@@ -21,10 +22,22 @@ function MovieDetails(props){
             },
             body: JSON.stringify( {stars: rate + 1} )
         })
+        .then( () => getDetails())
+        .catch( error => console.log(error))
+    }    
+    const getDetails = () => {
+        fetch(`http://127.0.0.1:8000/api/movies/${mov.id}/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':'Token 0b5b3e40e093f6746767bed29354889f58bdaf0e',
+            },
+        })
         .then( resp => resp.json())
-        .then( resp  => console.log(resp))
+        .then( resp  => props.updateMovie(resp))
         .catch( error => console.log(error))
     }
+
     return (
         <React.Fragment>
             { mov ? (
