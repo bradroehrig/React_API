@@ -24,7 +24,10 @@ function MovieDetails(props){
                     <div className="rate-container">
                         <h2>Rate it</h2>
                         { [...Array(5)].map( (e, i) => {
-                            return <FontAwesomeIcon icon={faStar} className={highlighted > i -1 ? 'purple':''}/>
+                            return <FontAwesomeIcon key={i} icon={faStar} className={highlighted > i -1 ? 'purple':''}
+                                onMouseEnter={setHighlighted(i)}
+                                onMouseLeave={setHighlighted(-1)}
+                            />
                         })}
                     </div>
                 </div>
