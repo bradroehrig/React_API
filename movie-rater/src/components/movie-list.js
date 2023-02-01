@@ -8,15 +8,13 @@ function MovieList(props){
 
     return (
         <div>
-            <div>
-                { props.movies && props.movies.map( movie => {
-                    return (
-                    <div key={movie.id}>
-                        <h2 onClick={movieClicked(movie)}>{ movie.title }</h2>
-                    </div>
-                    )
-                })}
-            </div>
+            { props.movies && props.movies.map( movie => {
+                return (
+                <div key={movie.id}>
+                    <h2 onClick={movieClicked(movie)}>{ movie.title }</h2>
+                </div>
+                )
+            })}
         </div>
     )
 }

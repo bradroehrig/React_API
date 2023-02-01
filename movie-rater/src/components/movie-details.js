@@ -17,7 +17,6 @@ function MovieDetails(props){
                     <FontAwesomeIcon icon={faStar} />
                 </div>
             ) : null }
-
         </div>
     )
 }
