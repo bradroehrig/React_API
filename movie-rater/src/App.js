@@ -11,7 +11,7 @@ function App() {
   const [editedMovie, setEditedMovie] = useState(null);
 
   useEffect(()=>{
-    fetch("http://127.0.0.1:8000/api/movies", {
+    fetch("http://127.0.0.1:8000/api/movies/", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -42,17 +42,31 @@ function App() {
     })
     setMovies(newMovies)
   }
+  const newMovie = () => {
+    setEditedMovie({title: '', description: ''});
+    setSelectedMovie(null);
+  }
+  const movieCreated = movie => {
+    const newMovies = [...movies, movie];
+    setMovies(newMovies);
+  }
 
   return (
-    
     <div className="App">
       <header className="App-header">
         <h1>Movie Rater</h1>
       </header>
       <div className="layout">
-        <MovieList movies={movies} movieClicked={loadMovie} editClicked={editClicked}/>
+        <div>
+          <MovieList movies={movies} movieClicked={loadMovie} editClicked={editClicked}/>
+          <button onClick={ newMovie }>New movie</button>
+        </div>
         <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
-        { editedMovie ? <MovieForm movie={editedMovie} updatedMovie={updatedMovie}/> : null}        
+        { editedMovie ?
+        <MovieForm movie={editedMovie} updatedMovie={updatedMovie} movieCreated={movieCreated}/>
+        : null}
+        
+
       </div>
     </div>
   );
