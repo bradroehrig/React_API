@@ -11,10 +11,8 @@ function Auth(){
     const [token, setToken] = useCookies(['mr-token']);
 
     useEffect( () => {
-        console.log(token);
         if(token['mr-token']) window.location.href ='/movies';
-    }, [token]) 
-
+    }, [token])
 
     const loginClicked = () => {
         API.loginUser({username, password})
@@ -47,8 +45,7 @@ function Auth(){
                     {isLoginView ? 
                     <button onClick={loginClicked} disabled={isDisabled}>Login</button> :
                     <button onClick={registerClicked} disabled={isDisabled}>Register</button>
-                    }
-                
+                    }                
                 
                 {isLoginView ? 
                     <p onClick={()=> setIsLoginView(false)}>You don't have an account? Register here!</p> :
